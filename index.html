@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e9edf3">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#e9edf3">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Oscar Eduardo Soto Zorrilla, desarrollador full stack en Perú. Sitios web, apps con Kotlin y Flutter y enfoque en ciberseguridad.">
+  <title>Oscar Soto · Desarrollador full stack</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="design.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="portfolio">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4 4 7 8 9 4-2 8-5 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m7 6-6 6 6 6m10-12 6 6-6 6M14.5 3l-5 18"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8a8.5 8.5 0 1 1 16.2-4Z"/><path d="M8 7.5c.4-.5 1-.5 1.3.2l.8 1.7c.2.4-.4 1-.8 1.3.7 1.6 1.8 2.6 3.4 3.3.4-.5.9-1.2 1.4-1l1.8.9c.6.3.5.9.1 1.4-1 1.5-2.6 1.1-4.8-.1-2.3-1.2-3.9-3-4.3-4.7-.3-1.2.2-2.4 1.1-3Z" stroke-width="1.3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 3h7v7m0-7L10 14M10 3H3v18h18v-7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.1M7 17.5h.1m4-11h6m-6 11h6"/></symbol>
+    <symbol id="i-data" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 33 24">
+<title>linkedin-logo-icon</title>
+<g>
+<g>
+<path fill="#0077B5" d="M22.2,0H1.8C0.8,0,0,0.8,0,1.7v20.5c0,1,0.8,1.7,1.8,1.7h20.5c1,0,1.8-0.8,1.8-1.7V1.7
+          C24,0.8,23.2,0,22.2,0z"/>
+<path fill="#FFFFFF" d="M3.6,9h3.6v11.5H3.6V9z M5.3,3.3c1.1,0,2.1,0.9,2.1,2.1S6.5,7.4,5.3,7.4c-1.1,0-2.1-0.9-2.1-2.1
+          S4.2,3.3,5.3,3.3"/>
+<path fill="#FFFFFF" d="M9.4,9h3.4v1.6h0c0.5-0.9,1.6-1.8,3.4-1.8c3.6,0,4.3,2.4,4.3,5.5v6.3h-3.6v-5.6c0-1.3,0-3-1.9-3
+          c-1.9,0-2.1,1.4-2.1,2.9v5.7H9.4V9z"/>
+</g>
+<g opacity="0.55">
+<path fill="#231F20" d="M29.8,18.2c0.5-0.1,0.8-0.4,0.8-0.9c0-0.6-0.4-0.9-1.1-0.9h-1.2v3.2h0.5v-1.4h0.6l0,0l0.9,1.4h0.5
+          L29.8,18.2L29.8,18.2z M29.2,17.8h-0.5v-1.1h0.7c0.3,0,0.7,0.1,0.7,0.5C30.1,17.8,29.7,17.8,29.2,17.8z"/>
+<path fill="#231F20" d="M29.3,15c-1.7,0-3,1.3-3,3c0,1.7,1.3,3,3,3c1.7,0,3-1.3,3-3C32.3,16.3,31,15,29.3,15z M29.3,20.6
+          c-1.4,0-2.6-1.1-2.6-2.6c0-1.5,1.1-2.6,2.6-2.6c1.4,0,2.6,1.1,2.6,2.6C31.9,19.5,30.7,20.6,29.3,20.6z"/>
+</g>
+</g>
+</symbol>
+<symbol id="i-github" viewBox="0 0 98 96">
+<g clip-path="url(#clip0_730_27136)">
+<path d="M41.4395 69.3848C28.8066 67.8535 19.9062 58.7617 19.9062 46.9902C19.9062 42.2051 21.6289 37.0371 24.5 33.5918C23.2559 30.4336 23.4473 23.7344 24.8828 20.959C28.7109 20.4805 33.8789 22.4902 36.9414 25.2656C40.5781 24.1172 44.4062 23.543 49.0957 23.543C53.7852 23.543 57.6133 24.1172 61.0586 25.1699C64.0254 22.4902 69.2891 20.4805 73.1172 20.959C74.457 23.543 74.6484 30.2422 73.4043 33.4961C76.4668 37.1328 78.0937 42.0137 78.0937 46.9902C78.0937 58.7617 69.1934 67.6621 56.3691 69.2891C59.623 71.3945 61.8242 75.9883 61.8242 81.252L61.8242 91.2051C61.8242 94.0762 64.2168 95.7031 67.0879 94.5547C84.4102 87.9512 98 70.6289 98 49.1914C98 22.1074 75.9883 6.69539e-07 48.9043 4.309e-07C21.8203 1.92261e-07 -1.9479e-07 22.1074 -4.3343e-07 49.1914C-6.20631e-07 70.4375 13.4941 88.0469 31.6777 94.6504C34.2617 95.6074 36.75 93.8848 36.75 91.3008L36.75 83.6445C35.4102 84.2188 33.6875 84.6016 32.1562 84.6016C25.8398 84.6016 22.1074 81.1563 19.4277 74.7441C18.375 72.1602 17.2266 70.6289 15.0254 70.3418C13.877 70.2461 13.4941 69.7676 13.4941 69.1934C13.4941 68.0449 15.4082 67.1836 17.3223 67.1836C20.0977 67.1836 22.4902 68.9063 24.9785 72.4473C26.8926 75.2227 28.9023 76.4668 31.2949 76.4668C33.6875 76.4668 35.2187 75.6055 37.4199 73.4043C39.0469 71.7773 40.291 70.3418 41.4395 69.3848Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_730_27136">
+<rect width="98" height="96" fill="white"/>
+</clipPath>
+</defs>
+</symbol>
+</defs></svg>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Oscar Soto, ir al inicio" data-brand><svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M31 25v14a11 11 0 0 1-22 0V25a11 11 0 0 1 22 0Z" stroke="currentColor" stroke-width="6"/><path d="M56 17H45a8 8 0 0 0 0 16h3a8 8 0 0 1 0 16H36" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-short-name>Oscar Soto</span></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navegacion"><span></span><span></span></button>
+      <nav class="site-nav" id="navegacion" aria-label="Navegación principal"><a href="#inicio" aria-current="location">Inicio</a><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></nav>
+      <a class="header-contact" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact>Hablemos<svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-introduction">Hola, soy <strong data-short-name>Oscar Soto</strong></p>
+          <h1 id="hero-title">Tu próxima web,<br>bien construida.</h1>
+          <p class="hero-description"><span data-role>Desarrollador full stack</span> en Perú. Creo sitios web y apps a la medida de tu negocio.</p>
+          <div class="hero-actions"><a class="button button-blue" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact>Hablemos<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="hero-work-link" href="#proyectos">Ver proyectos<svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a></div>
+          <p class="hero-footnote"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Desarrollo full stack con enfoque en ciberseguridad.</p>
+        </div>
+        <div class="hero-stage">
+          <figure class="hero-identity">
+            <div class="hero-portrait media-slot" data-image-slot="hero"><img src="assets/oscar-soto-retrato.png" alt="Retrato de Oscar Eduardo Soto Zorrilla" width="1086" height="1448" fetchpriority="high" decoding="async"></div>
+          </figure>
+          <div class="hero-browser" role="region" aria-roledescription="carrusel" aria-label="Proyectos destacados" data-ui>
+            <div class="browser-chrome"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span data-showcase-title aria-live="off" aria-atomic="true">OZON Terapia del Dolor</span><svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></div>
+            <a class="showcase-image sample-crop configured-image" href="#proyecto-ozon" data-project="ozon" data-showcase-image aria-label="Ver proyecto OZON Terapia del Dolor"><img src="assets/projects/ozon.jpg" alt="Captura del sitio OZON Terapia del Dolor" width="1440" height="900" decoding="async"></a>
+            <div class="showcase-controls" aria-label="Cambiar vista de proyecto"><span>Proyectos</span><div><button type="button" data-showcase="ozon" aria-label="Mostrar OZON Terapia del Dolor" aria-pressed="true"></button><button type="button" data-showcase="ladosis" aria-label="Mostrar La Dosis" aria-pressed="false"></button><button type="button" data-showcase="octomon" aria-label="Mostrar OCTOMON" aria-pressed="false"></button></div></div>
+          </div>
+          <div class="stage-note" aria-hidden="true"><svg class="icon"><use href="#i-code"/></svg><span>De la idea<br>a la web.</span></div>
+        </div>
+      </div>
+      <div class="container hero-principles"><p><svg class="icon" aria-hidden="true"><use href="#i-screen"/></svg>Diseño que se adapta</p><p><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Desarrollo a medida</p><p><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Acompañamiento al publicar</p></div>
+    </section>
+
+    <section class="projects section" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading heading-inline"><div><h2 id="projects-title">Proyectos en vivo.</h2><p>Salud, música, comercio y tecnología.<br>Cada proyecto, con su propia identidad.</p></div><a class="text-link" href="#todos-los-proyectos" data-all-projects>Explorar proyectos<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div>
+        <div class="projects-grid" id="project-list">
+          <article class="project-card project-featured">
+            <div class="project-visual visual-ozon"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-ozon" data-project="ozon" data-project-image="ozon" aria-label="Ver ficha de OZON Terapia del Dolor"><img src="assets/projects/ozon.jpg" alt="Captura del sitio OZON Terapia del Dolor" width="1440" height="900" loading="lazy" decoding="async"></a><span class="visual-caption">Información, servicios y contacto en un mismo lugar.</span></div>
+            <div class="project-content"><h3><a href="#proyecto-ozon" data-project="ozon" data-project-title="ozon">OZON Terapia del Dolor</a></h3><p class="project-type">Sitio web de salud</p><p data-project-description="ozon">Tratamientos, especialista y orientación para solicitar una consulta, en una web cercana y clara.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Salud</li><li>Tratamientos</li><li>Contacto</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-ozon" data-project="ozon" aria-label="Ver detalles de OZON Terapia del Dolor">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://ozon-terapia-del-dolor.netlify.app/" data-project-visit="ozon" target="_blank" rel="noopener noreferrer" aria-label="Visitar OZON Terapia del Dolor (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-ladosis"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-ladosis" data-project="ladosis" data-project-image="ladosis" aria-label="Ver ficha de La Dosis"><img src="assets/projects/ladosis.jpg" alt="Captura del sitio La Dosis" width="1440" height="900" loading="lazy" decoding="async"></a></div>
+            <div class="project-content"><h3><a href="#proyecto-ladosis" data-project="ladosis" data-project-title="ladosis">La Dosis</a></h3><p class="project-type">Sitio web de una banda</p><p data-project-description="ladosis">La identidad de una banda de punk melódico, con su música, vídeos, fechas y comunidad.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Música</li><li>Multimedia</li><li>Comunidad</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-ladosis" data-project="ladosis" aria-label="Ver detalles de La Dosis">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://ladosisoficial.netlify.app/" data-project-visit="ladosis" target="_blank" rel="noopener noreferrer" aria-label="Visitar La Dosis (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-octomon"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-octomon" data-project="octomon" data-project-image="octomon" aria-label="Ver ficha de OCTOMON"><img src="assets/projects/octomon.jpg" alt="Captura del sitio OCTOMON" width="1440" height="900" loading="lazy" decoding="async"></a></div>
+            <div class="project-content"><h3><a href="#proyecto-octomon" data-project="octomon" data-project-title="octomon">OCTOMON</a></h3><p class="project-type">Catálogo y carrito de compras</p><p data-project-description="octomon">Cartas Pokémon por colección e idioma, con disponibilidad, carrito y solicitud por WhatsApp.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Catálogo</li><li>Carrito</li><li>WhatsApp</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-octomon" data-project="octomon" aria-label="Ver detalles de OCTOMON">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://octomon.netlify.app/" data-project-visit="octomon" target="_blank" rel="noopener noreferrer" aria-label="Visitar OCTOMON (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-bucomaxilofacial"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-bucomaxilofacial" data-project="bucomaxilofacial" data-project-image="bucomaxilofacial" aria-label="Ver ficha de Bucomaxilofacial Perú"><img src="assets/projects/bucomaxilofacial.jpg" alt="Captura del sitio Bucomaxilofacial Perú" width="1440" height="900" loading="lazy" decoding="async"></a></div>
+            <div class="project-content"><h3><a href="#proyecto-bucomaxilofacial" data-project="bucomaxilofacial" data-project-title="bucomaxilofacial">Bucomaxilofacial Perú</a></h3><p class="project-type">Sitio web de salud</p><p data-project-description="bucomaxilofacial">Servicios, proceso de atención y equipo especializado, con una navegación centrada en el paciente.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Servicios</li><li>Equipo</li><li>Contacto</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-bucomaxilofacial" data-project="bucomaxilofacial" aria-label="Ver detalles de Bucomaxilofacial Perú">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://bucomaxilofacial.netlify.app/" data-project-visit="bucomaxilofacial" target="_blank" rel="noopener noreferrer" aria-label="Visitar Bucomaxilofacial Perú (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-tukuntech"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-tukuntech" data-project="tukuntech" data-project-image="tukuntech" aria-label="Ver ficha de TukunTech"><img src="assets/projects/tukuntech.jpg" alt="Captura del sitio TukunTech" width="1440" height="900" loading="lazy" decoding="async"></a></div>
+            <div class="project-content"><h3><a href="#proyecto-tukuntech" data-project="tukuntech" data-project-title="tukuntech">TukunTech</a></h3><p class="project-type">Landing de producto IoT</p><p data-project-description="tukuntech">Presentación de un proyecto de salud preventiva que conecta un dispositivo, una plataforma y sus usuarios.</p><ul class="project-tags" aria-label="Características del proyecto"><li>IoT</li><li>Producto</li><li>Español e inglés</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-tukuntech" data-project="tukuntech" aria-label="Ver detalles de TukunTech">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://tukuntech.github.io/LandingPage/" data-project-visit="tukuntech" target="_blank" rel="noopener noreferrer" aria-label="Visitar TukunTech (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-tarjeta-ozon visual-digital-card"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-tarjeta-ozon" data-project="tarjeta-ozon" data-project-image="tarjeta-ozon" aria-label="Ver ficha de Tarjeta digital OZON"><img src="assets/projects/tarjeta-ozon.jpg" alt="Captura del sitio Tarjeta digital OZON" width="1440" height="900" loading="lazy" decoding="async"></a><img class="project-mobile-preview" src="assets/projects/tarjeta-ozon-movil.jpg" alt="" aria-hidden="true" width="390" height="844" loading="lazy" decoding="async"></div>
+            <div class="project-content"><h3><a href="#proyecto-tarjeta-ozon" data-project="tarjeta-ozon" data-project-title="tarjeta-ozon">Tarjeta digital OZON</a></h3><p class="project-type">Tarjeta de presentación digital</p><p data-project-description="tarjeta-ozon">Presentación profesional con servicios, ubicación y contacto en un mismo enlace. Con acceso por QR y soporte NFC como complemento.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Presentación</li><li>Contacto</li><li>NFC opcional</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-tarjeta-ozon" data-project="tarjeta-ozon" aria-label="Ver detalles de Tarjeta digital OZON">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://tarjetapersonal-ozon.netlify.app/" data-project-visit="tarjeta-ozon" target="_blank" rel="noopener noreferrer" aria-label="Visitar Tarjeta digital OZON (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual visual-tarjeta-ciberseguridad visual-digital-card"><a class="project-image media-slot sample-crop configured-image" href="#proyecto-tarjeta-ciberseguridad" data-project="tarjeta-ciberseguridad" data-project-image="tarjeta-ciberseguridad" aria-label="Ver ficha de Ciberseguridad.pe"><img src="assets/projects/tarjeta-ciberseguridad.jpg" alt="Captura del sitio Ciberseguridad.pe" width="1440" height="900" loading="lazy" decoding="async"></a><img class="project-mobile-preview" src="assets/projects/tarjeta-ciberseguridad-movil.jpg" alt="" aria-hidden="true" width="390" height="844" loading="lazy" decoding="async"></div>
+            <div class="project-content"><h3><a href="#proyecto-tarjeta-ciberseguridad" data-project="tarjeta-ciberseguridad" data-project-title="tarjeta-ciberseguridad">Ciberseguridad.pe</a></h3><p class="project-type">Tarjeta de presentación corporativa</p><p data-project-description="tarjeta-ciberseguridad">Presentación de servicios de ciberseguridad, material corporativo y canales de contacto. Compatible con un soporte NFC opcional.</p><ul class="project-tags" aria-label="Características del proyecto"><li>Presentación</li><li>Servicios</li><li>NFC opcional</li></ul><div class="project-bottom"><a class="project-detail-link" href="#proyecto-tarjeta-ciberseguridad" data-project="tarjeta-ciberseguridad" aria-label="Ver detalles de Ciberseguridad.pe">Ver detalles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="project-visit-link" href="https://tarjetas-ciberseguridadpe.netlify.app/p/ricardo-lanatta-forger" data-project-visit="tarjeta-ciberseguridad" target="_blank" rel="noopener noreferrer" aria-label="Visitar Ciberseguridad.pe (abre en una nueva pestaña)">Visitar sitio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="build-section section" aria-labelledby="build-title">
+      <div class="container build-grid">
+        <div class="build-copy"><h2 id="build-title">Una web,<br>por dentro.</h2><p>Una buena web también necesita reglas claras y datos bien organizados. Elige tu servicio y una fecha para conversar; el flujo prepara tu solicitud por WhatsApp.</p><div class="stack-path" aria-label="Capas de una aplicación"><span><svg class="icon" aria-hidden="true"><use href="#i-screen"/></svg>Interfaz</span><span><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg>Lógica</span><span><svg class="icon" aria-hidden="true"><use href="#i-data"/></svg>Datos</span></div><p class="build-note">La fecha es una propuesta. Envíame el mensaje por WhatsApp y coordinamos la disponibilidad.</p></div>
+        <div class="workbench" data-ui>
+          <div class="workbench-top"><span><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Un flujo, por dentro</span><span class="demo-indicator" data-flow-indicator>Contacto por WhatsApp</span><button class="text-link flow-cancel" type="button" data-reservation-cancel hidden>Cancelar</button></div>
+          <div class="demo-tabs" role="tablist" aria-label="Vistas de la demostración"><button type="button" role="tab" id="tab-vista" aria-selected="true" aria-controls="panel-vista" tabindex="0" data-demo-tab="vista">Interfaz</button><button type="button" role="tab" id="tab-logica" aria-selected="false" aria-controls="panel-logica" tabindex="-1" data-demo-tab="logica">Validación</button><button type="button" role="tab" id="tab-datos" aria-selected="false" aria-controls="panel-datos" tabindex="-1" data-demo-tab="datos">Datos <span data-record-count>0</span></button></div>
+          <div class="demo-panel" id="panel-vista" role="tabpanel" aria-labelledby="tab-vista" tabindex="0">
+            <h3>Reserva una conversación</h3><p>Elige un servicio y tu fecha preferida. Lo coordinamos por WhatsApp.</p>
+            <form id="demo-reservation" autocomplete="off" hidden>
+              <div class="demo-fields">
+                <div class="demo-name-field"><label for="demo-name">Tu nombre</label><input id="demo-name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" maxlength="80" required aria-describedby="demo-name-error"><p class="field-error" id="demo-name-error" hidden></p></div>
+                <div><label for="demo-service">¿Qué quieres construir?</label><select id="demo-service" name="service"><option>Sitio web</option><option>Tienda online</option><option>Aplicación web</option><option>Aplicación móvil</option></select></div>
+                <div><label for="demo-date">Fecha preferida</label><input id="demo-date" name="date" type="date" required aria-describedby="demo-date-error"><p class="field-error" id="demo-date-error" hidden></p></div>
+              </div>
+              <button class="button button-blue" type="submit">Solicitar por WhatsApp<svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="sr-only"> (abre WhatsApp en otra pestaña tras preparar la solicitud)</span></button>
+            </form>
+            <p class="sr-only" role="status" aria-live="polite" data-demo-feedback></p>
+            <p class="demo-privacy">Tu nombre, el servicio y la fecha se preparan en tu navegador. Si envías el mensaje por WhatsApp, recibiré esos datos y tu contacto para atender la consulta. <a href="privacidad.html#contacto">Cómo uso tus datos</a>.</p>
+          </div>
+          <div class="demo-panel" id="panel-logica" role="tabpanel" aria-labelledby="tab-logica" tabindex="0" hidden><h3>Primero, validar</h3><p>El nombre y la fecha deben estar completos. La fecha debe ser de hoy en adelante.</p><pre class="validation-code"><code><span class="code-line" data-code-line><span class="code-keyword">function</span> validarReserva(nombre, fecha, hoy) {</span><span class="code-line" data-code-line>  <span class="code-keyword">if</span> (!nombre.trim() || !fecha) <span class="code-keyword">return</span> <span class="code-string">"Completa tus datos"</span>;</span><span class="code-line" data-code-line>  <span class="code-keyword">if</span> (fecha &lt; hoy) <span class="code-keyword">return</span> <span class="code-string">"Elige hoy o después"</span>;</span><span class="code-line" data-code-line>  <span class="code-keyword">return</span> <span class="code-string">"ok"</span>;</span><span class="code-line">}</span></code></pre><p class="logic-status" role="status" aria-live="polite" data-logic-status>Elige una fecha para ver el resultado de la validación.</p></div>
+          <div class="demo-panel" id="panel-datos" role="tabpanel" aria-labelledby="tab-datos" tabindex="0" hidden>
+            <h3>El resultado, organizado</h3>
+            <div class="reservation-success" role="status" aria-live="polite" aria-atomic="true" data-reservation-success hidden><span class="reservation-check" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span><div><h4>¡Solicitud creada!</h4><p data-reservation-status>Tus datos están listos para WhatsApp.</p></div></div>
+            <p>Últimas solicitudes preparadas en esta visita. El envío se completa en WhatsApp; este historial se borra al recargar.</p>
+            <div class="data-empty" data-data-empty><svg class="icon" aria-hidden="true"><use href="#i-data"/></svg><p>Todavía no has preparado una solicitud.</p><button class="text-link" type="button" data-demo-return>Preparar una solicitud</button></div>
+            <div class="demo-table-wrap" data-data-table hidden><table><caption class="sr-only">Solicitudes preparadas en esta sesión, pendientes de enviar y confirmar por WhatsApp</caption><thead><tr><th scope="col">Nombre</th><th scope="col">Servicio</th><th scope="col">Fecha</th></tr></thead><tbody data-demo-records></tbody></table><button class="text-link" type="button" data-demo-reset>Borrar historial local</button></div>
+            <div class="reservation-next" data-reservation-next hidden><a class="text-link" data-reservation-link target="_blank" rel="noopener noreferrer">Abrir WhatsApp<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only"> (abre en otra pestaña)</span></a><p>Si no se abrió, continúa desde este enlace.</p></div>
+          </div>
+          <noscript><p class="noscript-note">Escríbeme por <a class="text-link" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer">WhatsApp</a> para coordinar el servicio y la fecha que necesitas.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section" id="sobre-mi" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-visual"><div class="about-portrait media-slot" data-image-slot="about"><img src="assets/oscar-soto-retrato.png" alt="Oscar Soto con camisa azul y gafas" width="1086" height="1448" loading="lazy" decoding="async"></div><p class="about-photo-caption"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Desde Perú,<br>para tu próximo proyecto.</span></p></div>
+        <div class="about-copy">
+          <h2 id="about-title">Hola, soy Oscar.</h2>
+          <p class="about-full-name" data-name>Oscar Eduardo Soto Zorrilla</p>
+          <nav class="social-links about-social" aria-label="Mis perfiles profesionales">
+            <a class="social-button social-linkedin" href="https://www.linkedin.com/in/oscar-eduardo-soto-zorrilla-74929a99" target="_blank" rel="noopener noreferrer" data-social="linkedin"><svg class="social-icon social-icon-linkedin" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg><span translate="no">LinkedIn</span><span class="sr-only"> (abre en otra pestaña)</span></a>
+            <a class="social-button social-github" href="https://github.com/oscaredu1226" target="_blank" rel="noopener noreferrer" data-social="github"><svg class="social-icon social-icon-github" aria-hidden="true" focusable="false"><use href="#i-github"/></svg><span translate="no">GitHub</span><span class="sr-only"> (abre en otra pestaña)</span></a>
+          </nav>
+          <p class="about-lead">Me gusta entender un problema y convertirlo en algo que puedas usar.</p>
+          <p>Trabajo en la interfaz y en la lógica que la sostiene. También desarrollo aplicaciones web y móviles con Kotlin y Flutter. Me interesa que cada decisión tenga un motivo: una navegación más clara, una tarea más sencilla o una página que cargue mejor.</p>
+          <p>Estudio Ingeniería de Software<span data-university-line hidden> en <span data-university></span></span> y sigo aprendiendo a través de proyectos. Complemento el desarrollo full stack con conocimientos especializados en ciberseguridad y una mirada atenta a la protección de la información.</p>
+          <h3 class="technology-title">Tecnologías que utilizo</h3><dl class="technology-groups"><div><dt>Frontend</dt><dd translate="no"><span>Angular</span><span>React</span><span>Vue</span><span>Bootstrap</span></dd></div><div><dt>Backend y datos</dt><dd translate="no"><span>Node.js</span><span>Python</span><span>MySQL</span></dd></div><div><dt>Apps web y móviles</dt><dd translate="no"><span>Kotlin</span><span>Flutter</span></dd></div></dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="servicios" aria-labelledby="services-title">
+      <div class="container"><div class="section-heading heading-inline"><div><h2 id="services-title">Hagamos espacio<br>para tu negocio.</h2><p>Un punto de partida claro. El alcance lo definimos juntos.</p></div><p class="services-intro">Desde una primera landing hasta una web con catálogo y contenido administrable.</p></div>
+        <div class="plans-grid">
+          <article class="plan-card"><div class="plan-header"><svg class="plan-icon icon" aria-hidden="true"><use href="#i-screen"/></svg><h3>Plan Básico</h3><p>Para presentar tu negocio</p><p class="price">S/ 650</p></div><ul class="check-list"><li>1 página con secciones clave</li><li>Diseño responsive</li><li>Botón de WhatsApp</li><li>Formulario de contacto</li><li>Integración con redes sociales</li><li>1 ronda de cambios</li><li>Entrega en 3–5 días hábiles</li></ul><a class="button button-outline plan-button" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact data-plan="Plan Básico — S/ 650">Consultar plan básico</a></article>
+          <article class="plan-card plan-featured"><div class="plan-header"><svg class="plan-icon icon" aria-hidden="true"><use href="#i-spark"/></svg><h3>Plan Profesional</h3><p>Más espacio para tu empresa</p><p class="price">S/ 1,400</p></div><ul class="check-list"><li>Hasta 5 páginas</li><li>Diseño personalizado</li><li>SEO técnico básico</li><li>Google Maps</li><li>Integración con redes sociales</li><li>2 rondas de cambios</li><li>Entrega en 7–12 días hábiles</li></ul><a class="button button-blue plan-button" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact data-plan="Plan Profesional — S/ 1,400">Consultar plan profesional</a></article>
+          <article class="plan-card"><div class="plan-header"><svg class="plan-icon icon" aria-hidden="true"><use href="#i-code"/></svg><h3>Plan Premium</h3><p>Para vender o recibir reservas</p><p class="price">S/ 2,600</p></div><ul class="check-list"><li>Hasta 8 páginas</li><li>Catálogo de productos o reservas</li><li>Panel para editar contenido (CMS)</li><li>SEO técnico básico</li><li>Integración con redes sociales</li><li>3 rondas de cambios</li><li>Entrega en 15–20 días hábiles</li></ul><a class="button button-outline plan-button" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact data-plan="Plan Premium — S/ 2,600">Consultar plan premium</a></article>
+        </div>
+        <article class="maintenance-card"><div><h3>Tu web, bien cuidada.</h3><p>Mantenimiento para que siga funcionando bien.</p></div><ul><li>Copias de seguridad</li><li>Actualizaciones técnicas</li><li>Cambios de contenido</li><li>Soporte prioritario</li></ul><a class="maintenance-price" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact data-plan="Mantenimiento web — desde S/ 80 al mes"><span>Desde <strong>S/ 80</strong> al mes</span><span class="maintenance-action">Consultar mantenimiento<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></article>
+      </div>
+    </section>
+
+    <section class="testimonials section" aria-labelledby="testimonials-title" data-testimonials-section hidden><div class="container"><h2 id="testimonials-title">Trabajar conmigo</h2><div class="testimonials-grid" data-testimonials-list></div></div></section>
+
+    <section class="closing section" id="contacto" aria-labelledby="contact-title"><div class="container closing-grid"><div class="contact-card"><h2 id="contact-title">Démosle forma<br>a tu próxima web.</h2><p>Cuéntame qué quieres construir. Una idea, una referencia o una pregunta son un buen inicio.</p><a class="button button-white" href="https://wa.me/51987509361" target="_blank" rel="noopener noreferrer" data-contact>Hablemos por WhatsApp<svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a><p class="contact-note" data-whatsapp-note>WhatsApp: <span data-whatsapp-number>+51 987 509 361</span><br>Trato directo, desde el primer mensaje.</p></div><div class="working-method"><h3>Así trabajamos juntos</h3><ol><li><h4>Primero, entender.</h4><p>Conversamos sobre tu negocio y lo que necesitas resolver.</p></li><li><h4>Construir y revisar.</h4><p>Definimos la estructura, desarrollamos y revisamos los avances contigo.</p></li><li><h4>Publicar y acompañar.</h4><p>Probamos la web, la ponemos en línea y te ayudo con los siguientes pasos.</p></li></ol></div></div></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-identity"><a class="footer-name" href="#inicio"><span data-short-name>Oscar Soto</span></a><p><svg class="footer-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M31 25v14a11 11 0 0 1-22 0V25a11 11 0 0 1 22 0Z" stroke="currentColor" stroke-width="6"/><path d="M56 17H45a8 8 0 0 0 0 16h3a8 8 0 0 1 0 16H36" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>© <span data-year>2026</span> · <span data-role>Desarrollador full stack</span></span></p></div>
+      <nav class="social-links footer-social" aria-label="Redes profesionales">
+        <a class="social-button social-linkedin" href="https://www.linkedin.com/in/oscar-eduardo-soto-zorrilla-74929a99" target="_blank" rel="noopener noreferrer" data-social="linkedin"><svg class="social-icon social-icon-linkedin" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg><span translate="no">LinkedIn</span><span class="sr-only"> (abre en otra pestaña)</span></a>
+        <a class="social-button social-github" href="https://github.com/oscaredu1226" target="_blank" rel="noopener noreferrer" data-social="github"><svg class="social-icon social-icon-github" aria-hidden="true" focusable="false"><use href="#i-github"/></svg><span translate="no">GitHub</span><span class="sr-only"> (abre en otra pestaña)</span></a>
+      </nav>
+      <a class="footer-top" href="#inicio" aria-label="Volver al inicio"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <nav class="footer-legal" aria-label="Información legal"><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos de uso</a><a href="cookies.html">Cookies y datos locales</a></nav>
+    </div>
+  </footer>
+  <dialog class="contact-dialog" aria-labelledby="dialog-title"><button class="dialog-close icon-button" type="button" aria-label="Cerrar ventana"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><div id="dialog-content"></div><p class="dialog-status" role="status" aria-live="polite" aria-atomic="true"></p></dialog>
+  <p class="toast" role="status" aria-live="polite" aria-atomic="true"></p>
+</body>
+</html>

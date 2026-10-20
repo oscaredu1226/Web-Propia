@@ -1,0 +1,70 @@
+/* Lectura de los avisos dentro de la identidad del portafolio. */
+.legal-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 84px; }
+.legal-header .brand { min-height: 44px; }
+.legal-back { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font: 650 14px/1.5 var(--display); }
+.legal-back .icon { width: 18px; height: 18px; transform: rotate(180deg); }
+.legal-main { padding-block: 76px 52px; }
+.legal-intro { max-width: 850px; }
+.legal-label { color: #2445c0; margin-bottom: 20px; font-size: 17px; }
+.legal-intro h1 { font-size: clamp(42px, 5vw, 68px); }
+.legal-description { max-width: 61ch; margin-top: 26px; font-size: 21px; color: var(--ink); }
+.legal-updated { margin-top: 23px; font-size: 15px; color: var(--muted); }
+.legal-tabs { display: flex; flex-wrap: wrap; gap: 8px 32px; padding-block: 20px; margin-top: 35px; }
+.legal-tabs a { display: inline-flex; align-items: center; min-height: 44px; font: 650 15px/1.5 var(--display); color: var(--muted); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 8px; }
+.legal-tabs a[aria-current="page"] { color: #2445c0; text-decoration-color: currentColor; }
+.legal-layout { display: grid; grid-template-columns: 225px minmax(0, 760px); gap: 65px; align-items: start; margin-top: 58px; }
+.legal-index { position: sticky; top: 120px; }
+.legal-index p { margin-bottom: 14px; font: 750 15px/1.5 var(--display); }
+.legal-index a { display: flex; align-items: center; min-height: 44px; font-size: 16px; line-height: 1.45; padding-block: 8px; color: var(--muted); }
+.legal-content { min-width: 0; }
+.legal-content section + section { margin-top: 48px; }
+.legal-content h2 { scroll-margin-top: 120px; font-size: 26px; line-height: 1.25; letter-spacing: -.035em; margin-bottom: 22px; }
+.legal-content p { font-size: 18px; line-height: 1.7; }
+.legal-content p + p { margin-top: 18px; }
+.legal-content a { color: #2445c0; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.legal-content ul { list-style: disc; padding-left: 24px; margin-block: 16px; }
+.legal-content li { padding-block: 7px; }
+.legal-content code { font-size: .9em; overflow-wrap: anywhere; }
+.legal-contact { margin-top: 75px; padding-block: 35px; }
+.legal-contact h2 { font-size: 30px; letter-spacing: -.04em; line-height: 1.25; }
+.legal-contact p { margin-top: 14px; color: var(--muted); }
+.legal-contact .button { margin-top: 25px; }
+@media (max-width: 1000px) {
+  .legal-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 700px) {
+  .legal-layout { grid-template-columns: 1fr; gap: 35px; margin-top: 34px; }
+  .legal-index { position: static; }
+  .legal-index ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
+  .legal-index a { font-size: 15px; }
+  .legal-tabs { gap: 0 22px; padding-block: 14px; }
+  .legal-tabs a { font-size: 14px; }
+}
+@media (max-width: 640px) {
+  .legal-header { min-height: 76px; gap: 14px; }
+  .legal-header .brand { font-size: 18px; white-space: nowrap; gap: 9px; }
+  .legal-back { font-size: 13px; gap: 6px; }
+  .legal-back .icon { width: 16px; height: 16px; }
+  .legal-main { padding-block: 42px 15px; }
+  .legal-label { margin-bottom: 17px; font-size: 16px; }
+  .legal-intro h1 { font-size: 42px; }
+  .legal-description { margin-top: 22px; font-size: 19px; }
+  .legal-updated { margin-top: 20px; font-size: 14px; }
+  .legal-content h2 { font-size: 24px; margin-bottom: 18px; scroll-margin-top: 100px; }
+  .legal-content p, .legal-content li { font-size: 17px; }
+  .legal-content section + section { margin-top: 38px; }
+  .legal-contact { margin-top: 46px; padding-block: 30px; }
+  .legal-contact h2 { font-size: 28px; }
+}
+@media (max-width: 359px) {
+  .legal-header .brand { font-size: 16px; gap: 7px; }
+  .legal-header .brand-mark { width: 32px; height: 32px; font-size: 21px; }
+  .legal-back { max-width: 110px; font-size: 13px; line-height: 1.35; }
+}
+.legal-content h2 { scroll-margin-top: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .legal-back:hover { color: #2445c0; }
+  .legal-tabs a:hover { color: #2445c0; text-decoration-color: currentColor; }
+  .legal-index a:hover { color: #2445c0; text-decoration: underline; text-underline-offset: 4px; }
+  .legal-content a:hover { color: #121922; }
+}
