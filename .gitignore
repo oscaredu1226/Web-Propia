@@ -1,0 +1,10 @@
+node_modules/
+.playwright-cli/
+.taste-skill/
+.env
+.env.*
+.vercel/
+*.pem
+*.key
+credentials*.json
+service-account*.json

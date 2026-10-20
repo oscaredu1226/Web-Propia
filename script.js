@@ -424,7 +424,7 @@
   const initialShowcase = new URL(location.href).searchParams.get("vista");
   selectShowcase(showcaseButtons.some(button => button.dataset.showcase === initialShowcase) ? initialShowcase : "ozon", false);
 
-  // Prepare a real WhatsApp enquiry; local records describe drafts, never confirmed bookings.
+  // Local drafts and the private follow-up register never confirm a WhatsApp message or booking.
   const demoTabs = [...document.querySelectorAll("[data-demo-tab]")];
   const demoForm = document.querySelector("#demo-reservation");
   const demoName = document.querySelector("#demo-name");
@@ -534,6 +534,30 @@
     });
   }
 
+  async function registerReservation(record, signal) {
+    if (!/^https?:$/.test(location.protocol) || signal.aborted) return false;
+    const controller = new AbortController();
+    const cancel = () => controller.abort();
+    const timeout = setTimeout(cancel, 8000);
+    signal.addEventListener("abort", cancel, { once: true });
+    try {
+      const response = await fetch("/api/solicitudes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        signal: controller.signal,
+        body: JSON.stringify({ ...record, website: demoForm.elements.website.value }),
+      });
+      if (!response.ok) return false;
+      const result = await response.json();
+      return result.ok === true && result.recorded === true && result.requestId === record.requestId;
+    } catch { return false; }
+    finally {
+      clearTimeout(timeout);
+      signal.removeEventListener("abort", cancel);
+    }
+  }
+
   async function runReservationFlow(record, destination) {
     clearPreparedReservation();
     clearCodeHighlight();
@@ -569,9 +593,16 @@
       demoFeedback.classList.add("is-success");
       demoFeedback.textContent = "Solicitud preparada. Pulsa Enviar en WhatsApp para que me llegue. La fecha queda pendiente de confirmación.";
       selectDemo("datos", true, true, true);
-      if (!await waitForReservationStep(flow.animate && !motionPreference.matches ? 850 : 350, signal)) return;
+      reservationStatus.textContent = "Registrando tu solicitud antes de abrir WhatsApp…";
+      const [recorded, ready] = await Promise.all([
+        registerReservation(record, signal),
+        waitForReservationStep(flow.animate && !motionPreference.matches ? 850 : 350, signal),
+      ]);
+      if (!ready || signal.aborted) return;
       if (dialog.open) { cancelReservationFlow(); return; }
-      reservationStatus.textContent = "Envía el mensaje en WhatsApp; la fecha queda pendiente de confirmación.";
+      reservationStatus.textContent = recorded
+        ? "Solicitud registrada. Envía el mensaje en WhatsApp para coordinar la fecha."
+        : "No pude confirmar el registro. Puedes continuar por WhatsApp para que reciba tu consulta.";
       // Keep the portfolio and its prepared request open while WhatsApp uses another tab.
       window.open(destination, "_blank", "noopener,noreferrer");
     } catch {
@@ -605,8 +636,9 @@
       return;
     }
     demoName.value = name;
+    const requestId = [...crypto.getRandomValues(new Uint8Array(16))].map(value => value.toString(16).padStart(2, "0")).join("");
     const requestedDate = dateFormatter.format(new Date(`${demoDate.value}T12:00:00Z`));
-    const message = `${contactGreeting()}\n\nQuisiera coordinar una conversación sobre mi proyecto.\nNombre: ${name}\nServicio: ${demoService.value}\nFecha preferida: ${requestedDate} (Perú).\n\n¿Tienes disponibilidad ese día?`;
+    const message = `${contactGreeting()}\n\nQuisiera coordinar una conversación sobre mi proyecto.\nNombre: ${name}\nServicio: ${demoService.value}\nFecha preferida: ${requestedDate} (Perú).\nReferencia: OS-${requestId.slice(0, 8).toUpperCase()}\n\n¿Tienes disponibilidad ese día?`;
     const destination = getWhatsapp();
     if (!destination) {
       openContact("", demoForm.querySelector('[type="submit"]'), message);
@@ -614,7 +646,7 @@
     }
     const whatsappUrl = new URL(destination);
     whatsappUrl.searchParams.set("text", message);
-    runReservationFlow({ name, service: demoService.value, date: demoDate.value }, whatsappUrl.href);
+    runReservationFlow({ name, service: demoService.value, date: demoDate.value, requestId }, whatsappUrl.href);
   });
   function clearPreparedReservation() {
     cancelReservationFlow();
@@ -655,7 +687,7 @@
     renderRecords();
     demoFeedback.classList.remove("is-success");
     clearPreparedReservation();
-    demoFeedback.textContent = "Historial local borrado. Los mensajes de WhatsApp se gestionan en tu conversación.";
+    demoFeedback.textContent = "Historial del navegador borrado. El registro privado y los mensajes de WhatsApp se gestionan por separado.";
     selectDemo("vista", true);
   });
   selectDemo(new URL(location.href).searchParams.get("demo") || "vista", false, false);

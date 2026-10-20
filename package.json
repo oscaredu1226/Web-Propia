@@ -1,0 +1,10 @@
+{
+  "name": "oscar-soto-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portafolio estático con registro privado de consultas en Google Sheets",
+  "dependencies": {
+    "google-auth-library": "11.3.1"
+  }
+}
