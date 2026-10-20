@@ -428,11 +428,13 @@
   const demoTabs = [...document.querySelectorAll("[data-demo-tab]")];
   const demoForm = document.querySelector("#demo-reservation");
   const demoName = document.querySelector("#demo-name");
+  const demoPhone = document.querySelector("#demo-phone");
   const demoDate = document.querySelector("#demo-date");
   const demoService = document.querySelector("#demo-service");
   const demoFeedback = document.querySelector("[data-demo-feedback]");
   const dateError = document.querySelector("#demo-date-error");
   const nameError = document.querySelector("#demo-name-error");
+  const phoneError = document.querySelector("#demo-phone-error");
   const reservationNext = document.querySelector("[data-reservation-next]");
   const reservationLink = document.querySelector("[data-reservation-link]");
   const workbench = document.querySelector(".workbench");
@@ -481,6 +483,16 @@
     if (fecha < hoy) return "Elige hoy o después";
     return "ok";
   }
+  function normalizePhone(value) {
+    const raw = value.trim();
+    if (!raw) return "";
+    if (raw.length > 32 || !/^\+?[\d\s().-]+$/.test(raw)) return null;
+    let digits = raw.replace(/\D/g, "");
+    if (/^9\d{8}$/.test(digits)) digits = `51${digits}`;
+    else if (digits.startsWith("00")) digits = digits.slice(2);
+    else if (!raw.startsWith("+") && !/^519\d{8}$/.test(digits)) return null;
+    return /^[1-9]\d{7,14}$/.test(digits) ? `+${digits}` : null;
+  }
   function renderRecords(highlightFirst = false) {
     const list = document.querySelector("[data-demo-records]");
     list.replaceChildren();
@@ -491,6 +503,12 @@
       const date = document.createElement("td");
       const name = document.createElement("td");
       name.textContent = record.name;
+      if (record.phone) {
+        const phone = document.createElement("small");
+        phone.className = "record-phone";
+        phone.textContent = `Celular: ${record.phone}`;
+        name.append(phone);
+      }
       service.textContent = record.service;
       date.textContent = dateFormatter.format(new Date(`${record.date}T12:00:00Z`));
       row.append(name, service, date);
@@ -503,7 +521,7 @@
   function setReservationBusy(busy) {
     workbench.classList.toggle("is-processing", busy);
     demoForm.setAttribute("aria-busy", String(busy));
-    [demoName, demoDate, demoService, reservationButton].forEach(control => { control.disabled = busy; });
+    [demoName, demoPhone, demoDate, demoService, reservationButton].forEach(control => { control.disabled = busy; });
     reservationCancel.hidden = !busy;
     flowIndicator.hidden = busy;
     if (!busy) workbench.style.removeProperty("--flow-panel-height");
@@ -619,26 +637,31 @@
     event.preventDefault();
     if (activeReservation) return;
     const name = demoName.value.trim().replace(/\s+/g, " ");
+    const phone = normalizePhone(demoPhone.value);
     const nameMessage = !name ? "Escribe tu nombre." : name.length > 80 ? "Usa hasta 80 caracteres." : "";
+    const phoneMessage = phone === null ? "Revisa el celular. Si no es de Perú, incluye + y el código de país." : "";
     const dateMessage = !demoDate.value ? "Elige una fecha." : demoDate.value < today ? "Elige hoy o después." : "";
     const result = validarReserva(name, demoDate.value, today);
     nameError.textContent = nameMessage;
     nameError.hidden = !nameMessage;
     demoName.setAttribute("aria-invalid", String(Boolean(nameMessage)));
+    phoneError.textContent = phoneMessage;
+    phoneError.hidden = !phoneMessage;
+    demoPhone.setAttribute("aria-invalid", String(Boolean(phoneMessage)));
     dateError.textContent = dateMessage;
     dateError.hidden = !dateMessage;
     demoDate.setAttribute("aria-invalid", String(Boolean(dateMessage)));
-    logicStatus.textContent = result === "ok" && !nameMessage ? "Validación correcta: nombre y fecha listos para preparar la solicitud." : `Validación: ${nameMessage || dateMessage}`;
-    if (nameMessage || result !== "ok") {
+    logicStatus.textContent = result === "ok" && !nameMessage && !phoneMessage ? "Validación correcta: datos listos para preparar la solicitud." : `Validación: ${nameMessage || phoneMessage || dateMessage}`;
+    if (nameMessage || phoneMessage || result !== "ok") {
       demoFeedback.classList.remove("is-success");
-      demoFeedback.textContent = nameMessage || "Revisa la fecha para continuar.";
-      (nameMessage ? demoName : demoDate).focus();
+      demoFeedback.textContent = nameMessage || phoneMessage || "Revisa la fecha para continuar.";
+      (nameMessage ? demoName : phoneMessage ? demoPhone : demoDate).focus();
       return;
     }
     demoName.value = name;
     const requestId = [...crypto.getRandomValues(new Uint8Array(16))].map(value => value.toString(16).padStart(2, "0")).join("");
     const requestedDate = dateFormatter.format(new Date(`${demoDate.value}T12:00:00Z`));
-    const message = `${contactGreeting()}\n\nQuisiera coordinar una conversación sobre mi proyecto.\nNombre: ${name}\nServicio: ${demoService.value}\nFecha preferida: ${requestedDate} (Perú).\nReferencia: OS-${requestId.slice(0, 8).toUpperCase()}\n\n¿Tienes disponibilidad ese día?`;
+    const message = `${contactGreeting()}\n\nQuisiera coordinar una conversación sobre mi proyecto.\nNombre: ${name}${phone ? `\nCelular: ${phone}` : ""}\nServicio: ${demoService.value}\nFecha preferida: ${requestedDate} (Perú).\nReferencia: OS-${requestId.slice(0, 8).toUpperCase()}\n\n¿Tienes disponibilidad ese día?`;
     const destination = getWhatsapp();
     if (!destination) {
       openContact("", demoForm.querySelector('[type="submit"]'), message);
@@ -646,7 +669,7 @@
     }
     const whatsappUrl = new URL(destination);
     whatsappUrl.searchParams.set("text", message);
-    runReservationFlow({ name, service: demoService.value, date: demoDate.value, requestId }, whatsappUrl.href);
+    runReservationFlow({ name, phone, service: demoService.value, date: demoDate.value, requestId }, whatsappUrl.href);
   });
   function clearPreparedReservation() {
     cancelReservationFlow();
@@ -665,6 +688,12 @@
     nameError.textContent = "";
     nameError.hidden = true;
     demoName.removeAttribute("aria-invalid");
+    clearPreparedReservation();
+  });
+  demoPhone.addEventListener("input", () => {
+    phoneError.textContent = "";
+    phoneError.hidden = true;
+    demoPhone.removeAttribute("aria-invalid");
     clearPreparedReservation();
   });
   demoService.addEventListener("change", clearPreparedReservation);

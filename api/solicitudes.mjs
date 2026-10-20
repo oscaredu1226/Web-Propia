@@ -2,7 +2,8 @@ import { createHash, randomBytes } from "node:crypto";
 import { JWT } from "google-auth-library";
 
 const services = new Set(["Sitio web", "Tienda online", "Aplicación web", "Aplicación móvil"]);
-const columns = ["Código", "Registrada el (Perú)", "Nombre", "Servicio", "Fecha preferida", "Origen", "Estado", "ID"];
+const legacyColumns = ["Código", "Registrada el (Perú)", "Nombre", "Servicio", "Fecha preferida", "Origen", "Estado", "ID"];
+const columns = [...legacyColumns, "Celular"];
 const scope = "https://www.googleapis.com/auth/spreadsheets";
 const windowMs = 10 * 60 * 1000;
 let googleClient;
@@ -24,26 +25,43 @@ function json(status, body, headers = {}) {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", ...headers } });
 }
 
+function normalizePhone(value) {
+  if (value === undefined || value === null) return "";
+  if (typeof value !== "string") return null;
+  const raw = value.trim();
+  if (!raw) return "";
+  if (raw.length > 32 || !/^\+?[\d\s().-]+$/.test(raw)) return null;
+  let digits = raw.replace(/\D/g, "");
+  if (/^9\d{8}$/.test(digits)) digits = `51${digits}`;
+  else if (digits.startsWith("00")) digits = digits.slice(2);
+  else if (!raw.startsWith("+") && !/^519\d{8}$/.test(digits)) return null;
+  return /^[1-9]\d{7,14}$/.test(digits) ? `+${digits}` : null;
+}
+
 export async function appendToSheet({ settings, record, createdAt }, client) {
   const auth = client || (googleClient ??= new JWT({ email: settings.email, key: settings.key, scopes: [scope] }));
   const base = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(settings.id)}/values/`;
   const request = options => auth.request({ timeout: 4500, retry: false, ...options });
-  const headerUrl = base + encodeURIComponent(`${settings.prefix}A1:H1`);
+  const headerUrl = base + encodeURIComponent(`${settings.prefix}A1:I1`);
   const { data: header } = await request({ url: headerUrl });
   if (!header.values?.some(row => row.some(value => String(value).trim()))) {
     await request({ url: `${headerUrl}?valueInputOption=RAW`, method: "PUT", data: { values: [columns] } });
-  } else if (columns.some((column, index) => header.values[0]?.[index] !== column)) {
-    throw new Error("sheet_columns");
+  } else {
+    if (legacyColumns.some((column, index) => header.values[0]?.[index] !== column)
+      || (header.values[0]?.[8] && header.values[0][8] !== "Celular")) throw new Error("sheet_columns");
+    if (!header.values[0]?.[8]) {
+      await request({ url: `${base}${encodeURIComponent(`${settings.prefix}I1`)}?valueInputOption=RAW`, method: "PUT", data: { values: [["Celular"]] } });
+    }
   }
   const timestamp = new Intl.DateTimeFormat("sv-SE", {
     timeZone: "America/Lima", year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
   }).format(createdAt);
   const { data } = await request({
-    url: `${base}${encodeURIComponent(`${settings.prefix}A:H`)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    url: `${base}${encodeURIComponent(`${settings.prefix}A:I`)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
     method: "POST",
     data: { values: [[`OS-${record.requestId.slice(0, 8).toUpperCase()}`, timestamp, record.name, record.service,
-      record.date, "Formulario web", "Solicitud preparada; envío no verificado", record.requestId]] },
+      record.date, "Formulario web", "Solicitud preparada; envío no verificado", record.requestId, record.phone || ""]] },
   });
   if (data.updates?.updatedRows !== 1) throw new Error("sheet_append");
 }
@@ -71,12 +89,13 @@ export function createHandler({ env = process.env, save = appendToSheet, now = (
     if (body.website) return json(400, { ok: false });
     const record = {
       name: typeof body.name === "string" ? body.name.trim().replace(/\s+/g, " ") : "",
+      phone: normalizePhone(body.phone),
       service: body.service, date: body.date, requestId: body.requestId,
     };
     const instant = now();
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Lima", year: "numeric", month: "2-digit", day: "2-digit" }).format(instant);
     const date = typeof record.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(record.date) ? new Date(`${record.date}T12:00:00Z`) : null;
-    if (!record.name || record.name.length > 80 || /[\u0000-\u001f\u007f]/u.test(record.name)
+    if (!record.name || record.phone === null || record.name.length > 80 || /[\u0000-\u001f\u007f]/u.test(record.name)
       || !services.has(record.service) || !date || !Number.isFinite(date.getTime())
       || date.toISOString().slice(0, 10) !== record.date || record.date < today
       || typeof record.requestId !== "string" || !/^[a-f0-9]{32}$/.test(record.requestId)) return json(400, { ok: false });
