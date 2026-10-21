@@ -168,6 +168,7 @@ h2 { font-size: clamp(38px, 4.2vw, 60px); }
 .plan-header > p:not(.price) { color: #d8e2f7; }
 .plan-featured .plan-header > p:not(.price) { color: #4c596c; }
 .price { font-weight: 500; font-size: 46px; letter-spacing: -.06em; }
+.price-from { display: block; margin-bottom: 4px; font-size: 15px; line-height: 1.4; font-weight: 550; letter-spacing: 0; }
 .check-list { font-size: 15px; gap: 10px; }
 .check-list li::before { border-color: #b6c9ff; }
 .plan-featured .check-list li::before { border-color: #3658f5; }
